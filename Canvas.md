@@ -57,3 +57,29 @@ context.strokeRect(10, 10, 50, 50);
 
 > clearRect()方法用于清除画布上的矩形区域
 
+
+> 绘制路径----以绘制时钟为例
+
+```
+var drawing = document.getElementById("drawing");
+//确定浏览器支持<canvas>元素
+if (drawing.getContext){
+ var context = drawing.getContext("2d");
+ //开始路径
+ context.beginPath();
+ //绘制外圆
+ context.arc(100, 100, 99, 0, 2 * Math.PI, false);
+ //绘制内圆
+ context.moveTo(194, 100);
+ context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+ //绘制分针
+ context.moveTo(100, 100);
+ context.lineTo(100, 15);
+ //绘制时针
+ context.moveTo(100, 100);
+ context.lineTo(35, 100);
+ //描边路径
+ context.stroke();
+} 
+
+```
