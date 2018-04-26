@@ -63,23 +63,33 @@ context.strokeRect(10, 10, 50, 50);
 ```
 var drawing = document.getElementById("drawing");
 //确定浏览器支持<canvas>元素
+
 if (drawing.getContext){
  var context = drawing.getContext("2d");
- //开始路径
+ 
+ //要绘制路径，首先必须调用 beginPath()方法
  context.beginPath();
- //绘制外圆
+ 
+ //绘制外圆(以（100,100）为圆心，99为半径，起始角度0，结束角度360，顺时针)
  context.arc(100, 100, 99, 0, 2 * Math.PI, false);
- //绘制内圆
+
+ //将绘图游标移动到(x,y)，不画线
  context.moveTo(194, 100);
+ 
+ //绘制内圆(以（100,100）为圆心，94为半径，起始角度0，结束角度360，顺时针)
  context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+ 
  //绘制分针
  context.moveTo(100, 100);
- context.lineTo(100, 15);
+ context.lineTo(100, 15);//从上一点开始绘制一条直线，到(x,y)为止
+ 
  //绘制时针
  context.moveTo(100, 100);
  context.lineTo(35, 100);
+ 
  //描边路径
  context.stroke();
+ 
 } 
 
 ```
