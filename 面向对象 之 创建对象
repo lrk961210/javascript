@@ -1,0 +1,43 @@
+创建对象：
+1.利用new Object() 创建
+```
+var person = new Object();
+    person.name = "aaa";
+    
+    person.sayname = function(){
+        alert("this.name");
+    };
+```
+
+2、字面量创建
+```
+var person ={
+  name : "aaa",
+  
+  sayname : function(){
+      alert(this.name);
+  }
+};
+```
+
+3、工厂模式 -- 用函数来封装以特定接口创建对象的细节
+   创建俩个同类对象比上面节省代码
+   其实就是new Object() 的封装
+
+```
+function createPerson(name, age, job){
+
+	var o = new Object();
+	o.name = name;
+  
+	o.sayName = function(){
+		alert(this.name);
+	};
+	return o;
+}
+
+var person1 = createPerson("Nicholas", 29, "Software Engineer");
+var person2 = createPerson("Greg", 27, "Doctor"); 
+
+```
+
