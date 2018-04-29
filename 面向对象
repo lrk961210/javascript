@@ -1,0 +1,27 @@
+创建对象：
+1.利用new Object() 创建
+```
+var person = new Object();
+    person.name = "aaa";
+    
+    person.sayname = function(){
+        alert("this.name");
+    };
+```
+
+2、字面量创建
+```
+var person ={
+  name : "aaa",
+  
+  sayname : function(){
+      alert(this.name);
+  }
+};
+```
+对象包含属性和方法。
+
+其中属性有俩种类型：
+1、数据属性
+2、访问器属性
+
