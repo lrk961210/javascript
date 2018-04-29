@@ -1,24 +1,4 @@
-创建对象：
-1.利用new Object() 创建
-```
-var person = new Object();
-    person.name = "aaa";
-    
-    person.sayname = function(){
-        alert("this.name");
-    };
-```
-
-2、字面量创建
-```
-var person ={
-  name : "aaa",
-  
-  sayname : function(){
-      alert(this.name);
-  }
-};
-```
+对象属性
 对象包含属性和方法。
 注：以下定义和读取属性的方法针对 属性的所有特性（person.name只读出值）
 定义属性可以通过Object.defineProperty（）来定义
