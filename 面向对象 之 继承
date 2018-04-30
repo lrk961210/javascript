@@ -39,4 +39,34 @@ var instance1 = new SubType();
 
 ```
 
-3、 验证一下俩种继承继承了什么？？？？？
+3、 原型与构造函数结合起来使用
+SuperType.call(this, name); 解决了无法传参数的问题，并且构造函数里面的东西都是独立的
+SubType.prototype = new SuperType();传递了方法，使得方法共享，而构造函数里面的参数传进来会被上面那个覆盖了，不会共享
+```
+function SuperType(name){
+    this.name = name;
+    this.colors = ["red", "blue", "green"];
+}
+
+SuperType.prototype.sayName = function(){
+    alert(this.name);
+};
+
+function SubType(name, age){  
+    SuperType.call(this, name); 
+    
+    this.age = age;
+}
+
+SubType.prototype = new SuperType();
+
+SubType.prototype.sayAge = function(){
+    alert(this.age);
+};
+
+var instance1 = new SubType("Nicholas", 29);
+instance1.colors.push("black");
+alert(instance1.colors);  //"red,blue,green,black"
+instance1.sayName();      //"Nicholas";
+instance1.sayAge();       //29
+```
