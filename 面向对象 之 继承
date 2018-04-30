@@ -31,6 +31,7 @@ function SuperType(){
 }
 function SubType(){  
   //使用 call 在构造函数里面 继承；获得 构造函数 里面的东西；无法继承 原型 里面的东西
+  //这不就是在里面调用父函数吗。。。只是改变了this而已
   SuperType.call(this);
 }
 
@@ -38,4 +39,4 @@ var instance1 = new SubType();
 
 ```
 
-3、 
+3、 验证一下俩种继承继承了什么？？？？？
