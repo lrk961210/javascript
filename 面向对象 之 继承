@@ -2,26 +2,26 @@
 这不就是用对象给原型赋值吗。。。和字面量差不多
 缺点：继承的方法 属性都共享了
 ```
- function SuperType(){
-            this.property = true;
-        }
-        
-        SuperType.prototype.getSuperValue = function(){
-            return this.property;
-        };
-        
-        function SubType(){
-            this.subproperty = false;
-        }
-        
-        //  继 承 SuperType； 继承了 所有 属性方法，这些属性方法变成了原型属性了（即共享）
-        SubType.prototype = new SuperType();
-        
-        //  给 原型添加方法 要放在 继承 后面； 并且不要用字面量创建
-        SubType.prototype.getSubValue = function (){
-            return this.subproperty;
-        };
+function SuperType(){
+    this.property = true;
 }
+
+SuperType.prototype.getSuperValue = function(){
+    return this.property;
+};
+
+function SubType(){
+    this.subproperty = false;
+}
+
+//  继 承 SuperType； 继承了 所有 属性方法，这些属性方法变成了原型属性了（即共享）
+SubType.prototype = new SuperType();
+
+//  给 原型添加方法 要放在 继承 后面； 并且不要用字面量创建
+SubType.prototype.getSubValue = function (){
+    return this.subproperty;
+};
+
 ```
 
 2、借用构造函数
