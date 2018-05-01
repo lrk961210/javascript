@@ -1,4 +1,5 @@
 1、原型链继承
+这不就是用对象给原型赋值吗。。。和字面量差不多
 缺点：继承的方法 属性都共享了
 ```
  function SuperType(){
@@ -69,4 +70,95 @@ instance1.colors.push("black");
 alert(instance1.colors);  //"red,blue,green,black"
 instance1.sayName();      //"Nicholas";
 instance1.sayAge();       //29
+```
+
+4、原型式继承
+传入一个作为基础的对象o，创建一个空构造函数同时原型等于o，返回new F()
+创建出来的实例会与o共享已有属性
+```
+function object(o){
+	function F(){}
+	F.prototype = o;
+	return new F();
+} 
+var person = {
+	name: "Nicholas",
+	friends: ["Shelby", "Court", "Van"]
+};
+var anotherPerson = object(person);
+anotherPerson.name = "Greg";       //覆盖同名
+anotherPerson.friends.push("Rob"); //修改共享
+
+var yetAnotherPerson = object(person);
+yetAnotherPerson.name = "Linda";
+yetAnotherPerson.friends.push("Barbie");
+
+alert(person.friends); //"Shelby,Court,Van,Rob,Barbie
+
+```
+
+5、寄生式继承
+寄生：即寄生在构造函数里面，构造函数仅用于封装继承过程
+对象传入4的函数，得到的新对象再添加属性方法，返回新对象
+```
+function createAnother(original){
+  var clone = object(original); //通过调用函数创建一个新对象
+  clone.sayHi = function(){ //以某种方式来增强这个对象
+    alert("hi");
+  };
+  return clone; //返回这个对象
+} 
+
+```
+
+6、寄生组合式继承
+使用原型式继承的基础上，再进行添加属性增强
+```
+function object(o){
+    function F(){}
+    F.prototype = o;
+    return new F();
+}
+
+function inheritPrototype(subType, superType){
+    var prototype = object(superType.prototype);   //创建对象，即继承的副本
+    prototype.constructor = subType;               //为这个副本指定其他的属性，以增强对象
+    subType.prototype = prototype;                 //继承
+}
+                        
+function SuperType(name){
+    this.name = name;
+    this.colors = ["red", "blue", "green"];
+}
+
+SuperType.prototype.sayName = function(){
+    alert(this.name);
+};
+
+function SubType(name, age){  
+    SuperType.call(this, name);
+    
+    this.age = age;
+}
+
+inheritPrototype(SubType, SuperType);
+
+SubType.prototype.sayAge = function(){
+    alert(this.age);
+};
+
+var instance1 = new SubType("Nicholas", 29);
+instance1.colors.push("black");
+alert(instance1.colors);  //"red,blue,green,black"
+instance1.sayName();      //"Nicholas";
+instance1.sayAge();       //29
+
+
+var instance2 = new SubType("Greg", 27);
+alert(instance2.colors);  //"red,blue,green"
+instance2.sayName();      //"Greg";
+instance2.sayAge();       //27
+
+
+
 ```
