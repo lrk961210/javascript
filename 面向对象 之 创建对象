@@ -117,3 +117,44 @@ var friend = new Person("Nicholas");
 friend.sayName(); 
 
 ```
+
+7、寄生构造函数模式
+例如创建一个有特殊方法的数组
+缺点：这种方法无法用instanceof确定对象类型
+```
+function SpecialArray(){
+	//创建数组
+	var values = new Array();
+	//添加值
+	values.push.apply(values, arguments);
+	//添加方法
+	values.toPipedString = function(){
+		return this.join("|");
+	};
+
+	//返回数组
+	return values;
+}
+var colors = new SpecialArray("red", "blue", "green"); 
+
+```
+
+8、稳妥构造函数模式
+这小子变量用参数传入，不做赋值。。。。只能通过方法访问
+```
+function Person(name, age, job){
+
+	//创建要返回的对象
+	var o = new Object(); 
+	
+	//可以在这里定义私有变量和函数
+
+	//添加方法
+	o.sayName = function(){
+		alert(name);
+	};
+
+	//返回对象
+	return o;
+} 
+```
