@@ -1,6 +1,7 @@
 1、原型链继承
 这不就是用对象给原型赋值吗。。。和字面量差不多
 缺点：继承的方法 属性都共享了
+
 ```
 function SuperType(){
     this.property = true;
