@@ -75,7 +75,7 @@ instance1.sayAge();       //29
 
 4、原型式继承
 传入一个作为基础的对象o，创建一个空构造函数同时原型等于o，返回new F()
-创建出来的实例会与o共享已有属性
+创建出来的实例会共享已有属性
 ```
 function object(o){
 	function F(){}
