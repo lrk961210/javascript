@@ -1,0 +1,11 @@
+1、创建数组
+var arr = new Array()
+var arr = new Array(20)
+var arr = new Array("red","blue","grren") 
+          new 可省略
+var arr = ["red","blue"]
+var arr = [1,2,]  此时2|3项，最后一项可能为undefined
+arr.length
+
+2、基本方法
+
