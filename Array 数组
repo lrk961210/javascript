@@ -8,4 +8,15 @@ var arr = [1,2,]  此时2|3项，最后一项可能为undefined
 arr.length
 
 2、基本方法
+var color = ["red","blue"]
+color.toString()   "red,blue"
+color.valueOf()    返回数组
+color.join(||)     "red||blue"
+
+color.push()      移除并返回最后一项
+color.pop()       添加并返回新长度
+color.shift()     移除并返回第一项
+color.unshift()   添加并返回新长度
+
+排列：reverse（）与sort（）
 
