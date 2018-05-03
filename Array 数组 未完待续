@@ -19,4 +19,48 @@ color.shift()     移除并返回第一项
 color.unshift()   添加并返回新长度
 
 排列：reverse（）与sort（）
+var values = [0,1,2,5,4,3]
+values.sort(compare)
+function compare(value1,value2){
+    return value1 - value2;
+} 升序
 
+拼接 concat（）
+var colors = ["red", "green", "blue"];
+var colors2 = colors.concat("yellow", ["black", "brown"]);
+
+alert(colors); //red,green,blue
+alert(colors2); //red,green,blue,yellow,black,brown 
+
+截取 slice（） [ , )
+var colors = ["red", "green", "blue", "yellow", "purple"];
+var colors2 = colors.slice(1);
+var colors3 = colors.slice(1,4);
+alert(colors2); //green,blue,yellow,purple
+alert(colors3); //green,blue,yellow 
+
+splice()
+删除：splice(0,2)会删除数组中的前两项。(起始，项数)
+插入|替换：splice（起始位置、要删除的项数，要插入的项,要插入的项...）
+
+返回一个数组，删除的项（无则空）
+
+位置 indexOf 
+values.indexOf(要查找的项,[表示查找起点位置的索引])
+返回位置      
+
+迭代方法
+every()：对数组中的每一项运行给定函数，如果该函数对每一项都返回 true，则返回 true。
+filter()：对数组中的每一项运行给定函数，返回该函数会返回 true 的项组成的数组。
+forEach()：对数组中的每一项运行给定函数。这个方法没有返回值。
+map()：对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。
+some()：对数组中的每一项运行给定函数，如果该函数对任一项返回 true，则返回 true
+
+
+归并方法 reduce()和 reduceRight()
+
+var values = [1,2,3,4,5];
+var sum = values.reduce(function(prev, cur, index, array){ //前一个值、当前值、项的索引和数组对象
+    return prev + cur;
+});
+alert(sum); //15 
