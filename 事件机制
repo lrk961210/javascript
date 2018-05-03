@@ -1,0 +1,28 @@
+事件冒泡：从具体的元素开始往上传递
+事件捕获：从doucument对象|window对象开始往下
+
+由于老版本浏览器不支持事件捕获，大多数时候使用事件冒泡
+
+事件处理程序：
+
+HTML 中指定事件处理程序
+
+写具体代码
+<input type="button" value="Click Me" onclick="alert('AAA')" /> 
+或者 调用函数 
+缺点：函数未加载之前，点击会发生错误 用try{showMessage();}catch(ex){} 隐藏错误
+     HTML 与 JavaScript 代码紧密耦合
+<input type="button" value="Click Me" onclick="showMessage()" /> 
+
+onclick里面有一个事件对象event
+onclick里面 this 为事件的目标元素
+且可以直接访问document和元素本身的成员，相当于
+function(){
+	with(document){
+		with(this){
+		//元素属性值
+		}
+	}
+}
+如果是表单输入元素，还会包含with(this.form）
+
