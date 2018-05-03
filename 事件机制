@@ -1,3 +1,5 @@
+DOM events ：https://en.wikipedia.org/wiki/DOM_events#Events 
+
 事件冒泡：从具体的元素开始往上传递
 事件捕获：从doucument对象|window对象开始往下
 
@@ -25,4 +27,71 @@ function(){
 	}
 }
 如果是表单输入元素，还会包含with(this.form）
+
+
+
+DOM0 级事件处理程序 它会在事件流的冒泡阶段被处理
+var btn = document.getElementById("myBtn");
+btn.onclick = function(){
+   alert(this.id); //"myBtn" 
+};
+缺点：
+我们不能给一个元素同时添加两个事件，比如俩个onclick事件会相互覆盖
+我们不能控制元素的事件流（捕获or冒泡）
+
+删除事件处理程序
+btn.onclick = null; 
+
+
+DOM2 级事件处理程序
+addEventListener() 和 removeEventListener()
+
+var btn = document.getElementById("myBtn");
+btn.addEventListener("click", function(){
+    alert(this.id);
+}, false); false表示冒泡阶段调用事件处理程序
+
+removeEventListener()移除时传入的参数与添加处理程序时使用的参数相同，也就意味着匿名函数无法移除
+
+IE：attachEvent()和 detachEvent()
+
+var btn = document.getElementById("myBtn");
+btn.attachEvent("onclick", function(){
+ alert("Clicked");
+}); 
+不同点：
+事件处理程序会在全局作用域中运行，因此 this 等于 window
+两个不同的事件处理程序执行顺序相反
+
+跨浏览器的事件处理程序：
+var EventUtil = {
+
+    addHandler: function(element, type, handler){
+        if (element.addEventListener){
+            element.addEventListener(type, handler, false);
+        } else if (element.attachEvent){
+            element.attachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = handler;
+        }
+    },
+    removeHandler: function(element, type, handler){
+        if (element.removeEventListener){
+            element.removeEventListener(type, handler, false);
+        } else if (element.detachEvent){
+            element.detachEvent("on" + type, handler);
+        } else {
+            element["on" + type] = null;
+        }
+    },
+}
+
+var btn = document.getElementById("myBtn");
+var handler = function(){
+    alert("Clicked");
+};
+EventUtil.addHandler(btn, "click", handler);
+//这里省略了其他代码
+EventUtil.removeHandler(btn, "click", handler); 
+
 
