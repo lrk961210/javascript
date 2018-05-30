@@ -1,0 +1,30 @@
+### 基本包装类型
+
+基本类型值不是对象，它在使用对象相关的属性和方法的时候，系统会在后台模拟相关的操作，例如
+执行
+var s1 = "some text";
+var s2 = s1.substring(2);  <---这一句
+
+后台
+var s1 = new String("some text");
+var s2 = s1.substring(2);
+s1 = null; 
+
+
+typeof 返回 object
+
+Object 构造函数也会像工厂方法一样，根据传入值的类型返回相应基本包装类型的实例。例如：
+var obj = new Object("some text");
+alert(obj instanceof String); //true 
+
+#### Boolean类型
+valueOf()返回 true 或false
+toString()返回 "true"和"false"。
+
+基本类型与引用类型的布尔值
+alert(typeof falseObject); //object
+alert(typeof falseValue); //boolean
+alert(falseObject instanceof Boolean); //true
+alert(falseValue instanceof Boolean); //false
+
+#### Number类型
