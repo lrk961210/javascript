@@ -28,3 +28,61 @@ alert(falseObject instanceof Boolean); //true
 alert(falseValue instanceof Boolean); //false
 
 #### Number类型
+valueOf() 返回基本类型的数值
+toLocaleString()和 toString() 返回字符串形式数值
+
+var num = 10;
+alert(num.toString()); //"10"
+alert(num.toString(2)); //"1010"
+alert(num.toString(8)); //"12"
+alert(num.toString(10)); //"10"
+alert(num.toString(16)); //"a"
+
+toFixed()方法
+var num = 10;
+alert(num.toFixed(2)); //"10.00" 
+
+#### String类型
+
+charAt()和 charCodeAt()
+var stringValue = "hello world";
+alert(stringValue.charAt(1)); //"e" 
+
+concat()
+var string1 = "hello ";
+var result = string1.concat("world", "!");
+alert(result); //"hello world!"
+alert(string1); //"hello" 
+
+slice()、substr()和 substring()
+var stringValue = "hello world";
+alert(stringValue.slice(3));       //"lo world"
+alert(stringValue.substring(3));   //"lo world"
+alert(stringValue.substr(3));      //"lo world"
+alert(stringValue.slice(3, 7));    //"lo w"     [3,7)
+alert(stringValue.substring(3,7)); //"lo w"     [3,7)
+alert(stringValue.substr(3, 7));   //"lo worl"  [3,3+7)
+
+slice()方法     负值与字符串的长度相加，
+substr()方法    负的第一个参数加上length，而将负的第二个换为 0。
+substring()方法 都转换为 0。
+
+indexOf()和 lastIndexOf()
+var stringValue = "hello world";
+alert(stringValue.indexOf("o")); //4
+alert(stringValue.lastIndexOf("o")); //7 
+//第二个参数表示从哪个位置开始
+var stringValue = "hello world";
+alert(stringValue.indexOf("o", 6)); //7
+alert(stringValue.lastIndexOf("o", 6)); //4 
+
+trim()返回 去除前后空格的字符串
+
+字符串的模式匹配方法 match（）
+var text = "cat, bat, sat, fat";
+var pattern = /.at/;
+//与 pattern.exec(text)相同
+var matches = text.match(pattern);
+alert(matches.index); //0
+alert(matches[0]); //"cat"
+alert(pattern.lastIndex); //0 
