@@ -1,0 +1,9 @@
+call 和 apply 都是为了改变某个函数运行时的上下文（context）而存在的，即，改变函数体内部 this 的指向。
+
+
+#### 区别
+接受参数的方式不太一样
+func.call(this, arg1, arg2);
+func.apply(this, [arg1, arg2])
+
+具体例子 ：https://www.cnblogs.com/coco1s/p/4833199.html
