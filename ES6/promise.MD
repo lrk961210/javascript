@@ -11,7 +11,8 @@ let promise = new Promise(resolve => {
 
 promise.then(value => console.log(value)) //等 resolve
 ```
-// 类比 angular中的Observable
+#### 类比 angular中的Observable
+```
 let stream1$ = new Observable(observer => {
     let timeout = setTimeout(() => {
       observer.next('observable timeout')
@@ -21,4 +22,15 @@ let stream1$ = new Observable(observer => {
       clearTimeout(timeout)
     }
 })
+// 下面这个变量可以用来取消订阅
 let disposable = stream1$.subscribe(value => console.log(value))
+```
+
+#### 不同之处
+- angular中的Observable 可以取消订阅
+- angular中的Observable 可以发射多个值
+- angular中的Observable 提供了工具函数
+
+
+代码： https://gitee.com/mumu-osc/NiceFish/tree/master
+视频： https://www.youtube.com/watch?v=5Rj8_4ftZeE
