@@ -28,8 +28,8 @@ let disposable = stream1$.subscribe(value => console.log(value))
 
 #### 不同之处
 - angular中的Observable 可以取消订阅
-- angular中的Observable 可以发射多个值
-- angular中的Observable 提供了工具函数
+- angular中的Observable 可以发射多个值 (如连续调用observer.next方法)
+- angular中的Observable 提供了工具函数（如stream1$.filter(value => value % 2 == 0).subscribe()
 
 
 代码： https://gitee.com/mumu-osc/NiceFish/tree/master
