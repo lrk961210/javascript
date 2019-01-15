@@ -64,3 +64,21 @@ var sum = values.reduce(function(prev, cur, index, array){ //前一个值、当�
     return prev + cur;
 });
 alert(sum); //15 
+
+## 求数组里面的最大值
+参考 https://blog.csdn.net/web_hwg/article/details/68065587
+使用Math.max.apply 的时候，会由于含有空值导致NaN
+```
+ console.log(nodeLevelCount); // [5, 2, 2, 1, 4, empty, 1, 2, 9]
+ const max = Math.max.apply(null, nodeLevelCount);  // NaN
+ 
+ // 改进
+ Math.max(...nodeLevelCount.slice().filter(e => e))
+ 
+ 
+ // 使用sort会影响原先的的nodeLevelCount顺序，导致显示异常
+ const max = nodeLevelCount.sort(function(a, b){
+    return b - a;
+ })[0];
+```
+
