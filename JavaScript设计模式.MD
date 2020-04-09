@@ -167,6 +167,38 @@
 
 ```
 
+## 策略模式
+将算法和使用分离开
+参考 https://blog.csdn.net/u011350550/article/details/84430880
+
+```
+    // 分离前
+    function calBonus(grade, salary) {
+      if (grade === 'S') {
+        return salary*4;
+      } else if (grade === 'A') {
+        return salary*3;
+      } else if (grade === 'B') {
+        return salary*2;
+      } else {
+        return salary;
+      }
+    }
+    
+    // 分离后
+    //计算绩效为S的年终
+    function S(salary) {
+      return salary * 4;
+    }
+
+    //策略使用
+    function calBonus(fn, salary) {
+      return  fn(salary);
+    }
+
+    //计算绩效为S，工资为20000的年终
+    calBonus(S, 20000);
+```
 
 未完待续
 
